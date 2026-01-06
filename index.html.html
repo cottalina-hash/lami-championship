@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LAMI CHAMPIONSHIP – zapisy</title>
+  <meta name="description" content="LAMI CHAMPIONSHIP – międzynarodowe mistrzostwa online stylizacji brwi i rzęs. Biel, czerń i róż. Prestiż, edukacja, transparentny system ocen." />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --card:#ffffff;
+      --card2:#ffffff;
+      --text:#0b0b10;
+      --muted:rgba(11,11,16,.72);
+      --muted2:rgba(11,11,16,.56);
+      --line:rgba(11,11,16,.10);
+      --accent:#FE79C5; /* róż z logo */
+      --accent2:#FE79C5;
+      --good:#10b981;
+      --shadow: 0 10px 28px rgba(11,11,16,.08);
+      --radius:22px;
+      --radius2:16px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 520px at 10% 8%, rgba(254,121,197,.12), transparent 60%),
+        radial-gradient(900px 520px at 90% 18%, rgba(254,121,197,.08), transparent 62%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{color:inherit; text-decoration:none;}
+    .container{max-width:var(--max); margin:0 auto; padding:24px;}
+
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.82);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px; max-width:var(--max); margin:0 auto;}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.5px;}
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(254,121,197,.95), rgba(254,121,197,.70));
+      box-shadow: 0 10px 26px rgba(254,121,197,.22);
+    }
+    .nav{display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end;}
+    .nav a{font-size:13px; color:var(--muted); padding:8px 10px; border-radius:12px; border:1px solid transparent;}
+    .nav a:hover{color:var(--text); border-color:var(--line); background:rgba(11,11,16,.03);}
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(11,11,16,.02);
+      color:var(--text);
+      font-weight:700;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(11,11,16,.04); border-color: rgba(11,11,16,.16);}
+    .btn-primary{
+      border-color: rgba(254,121,197,.55);
+      background: var(--accent);
+      color:#111;
+      box-shadow: 0 14px 30px rgba(254,121,197,.18);
+    }
+    .btn-primary:hover{border-color: rgba(254,121,197,.75); background: rgba(254,121,197,.92);}
+    .btn-ghost{background: transparent;}
+
+    /* Hero */
+    .hero{padding:48px 0 16px;}
+    .hero-grid{display:grid; grid-template-columns: 1.15fr .85fr; gap:22px; align-items:stretch;}
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-card{padding:30px;}
+    .kicker{display:inline-flex; align-items:center; gap:10px; font-size:13px; color:var(--muted);}
+    .pill{padding:6px 10px; border-radius:999px; border:1px solid var(--line); background: rgba(11,11,16,.02);}
+    h1{margin:12px 0 10px; font-size:46px; line-height:1.06; letter-spacing:-.8px;}
+    .subtitle{font-size:16px; color:var(--muted); margin:0 0 18px;}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;}
+    .meta{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; color:var(--muted2); font-size:13px;}
+    .meta span{display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid var(--line); border-radius:999px; background: rgba(11,11,16,.02);}
+
+    /* Side card */
+    .side{padding:22px; display:flex; flex-direction:column; gap:14px;}
+    .side h3{margin:0; font-size:18px;}
+    .side p{margin:0; color:var(--muted); font-size:14px;}
+    .bullets{margin:6px 0 0; padding:0; list-style:none; display:grid; gap:10px;}
+    .bullets li{display:flex; gap:10px; color:var(--muted); font-size:14px;}
+    .dot{width:10px; height:10px; border-radius:999px; background: var(--accent); margin-top:6px; flex: 0 0 auto;}
+
+    /* Sections */
+    section{padding:20px 0;}
+    .section-card{padding:26px;}
+    .section-title{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:12px;}
+    .section-title h2{margin:0; font-size:22px; letter-spacing:-.2px;}
+    .section-title .hint{margin:0; color:var(--muted2); font-size:13px;}
+
+    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:14px;}
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;}
+
+    .tile{
+      background: rgba(11,11,16,.02);
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      padding:16px;
+      min-height: 92px;
+    }
+    .tile strong{display:block; font-size:14px; margin-bottom:6px;}
+    .tile p{margin:0; color:var(--muted); font-size:13px;}
+
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted);}
+    .note{margin-top:12px; padding:14px 16px; border-radius:16px; border:1px solid rgba(11,11,16,.12); background: rgba(254,121,197,.06); color:var(--muted); font-size:14px;}
+
+    /* Jury */
+    .judge-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;}
+    .judge{display:flex; align-items:center; gap:12px; padding:14px; border-radius:16px; border:1px solid var(--line); background: rgba(11,11,16,.02);}
+    .avatar{width:44px; height:44px; border-radius:16px; background: rgba(254,121,197,.10); border:1px solid rgba(254,121,197,.22);}
+    .judge b{display:block; font-size:14px;}
+    .judge span{display:block; font-size:12px; color:var(--muted2);}
+
+    /* Signup */
+    .signup{display:grid; grid-template-columns: 1.05fr .95fr; gap:14px; align-items:start;}
+    form{display:grid; gap:10px;}
+    label{font-size:13px; color:var(--muted2);}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.95);
+      color:var(--text);
+      outline:none;
+    }
+    input:focus, select:focus, textarea:focus{border-color: rgba(254,121,197,.55); box-shadow: 0 0 0 3px rgba(254,121,197,.18);}
+    textarea{min-height:92px; resize:vertical;}
+    .form-row{display:grid; grid-template-columns: 1fr 1fr; gap:10px;}
+    .tiny{font-size:12px; color:var(--muted2); margin:6px 0 0;}
+
+    /* Footer */
+    footer{padding:28px 0 44px; color:var(--muted2); font-size:13px;}
+    .footer-inner{border-top:1px solid var(--line); padding-top:18px; display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center;}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr;}
+      h1{font-size:40px;}
+      .grid-3{grid-template-columns: 1fr;}
+      .judge-grid{grid-template-columns: 1fr;}
+      .signup{grid-template-columns: 1fr;}
+      .nav{display:none;}
+    }
+    @media (max-width: 520px){
+      .container{padding:18px;}
+      .hero-card{padding:22px;}
+      h1{font-size:34px;}
+      .form-row{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="LAMI CHAMPIONSHIP">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyYAAAMmCAIAAACPVQJlAAAQAElEQVR4nNS9C4LsqI4tKkW/+c/4eL1KA/oL48is032p2hk2CEnoBwaM/z8ARP/8z1QlEHgU" alt="LAMI CHAMPIONSHIP" style="width:34px;height:34px;border-radius:12px;object-fit:contain;border:1px solid var(--line);background:#fff;" />
+        <div>
+          <div style="font-size:13px; color:var(--muted); font-weight:600;">Pawłowska Studio sp. z o.o.</div>
+          <div style="font-size:15px; font-weight:900; letter-spacing:.4px;">LAMI CHAMPIONSHIP</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Nawigacja">
+        <a href="#o">O wydarzeniu</a>
+        <a href="#wyroznia">Wyróżniki</a>
+        <a href="#kategorie">Kategorie</a>
+        <a href="#jury">Jury</a>
+        <a href="#nagrody">Nagrody</a>
+        <a href="#regulamin">Regulamin</a>
+        <a href="#cena">Koszt</a>
+        <a href="#pakiety">Pakiety</a>
+        <a href="#sponsorzy">Sponsorzy</a>
+        <a href="#faq">FAQ</a>
+        <a href="#zapisy">Zapisy</a>
+      </nav>
+
+      <a class="btn btn-primary" href="#zapisy">Zapisz się</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <div class="hero" id="top">
+      <div class="hero-grid">
+        <div class="card hero-card">
+          <div class="kicker">
+            <span class="pill">Międzynarodowe mistrzostwa online</span>
+            <span class="pill">Lash & Brow</span>
+          </div>
+
+          <h1>LAMI CHAMPIONSHIP</h1>
+          <p class="subtitle"><b>Mistrzostwa, które rozwijają.</b> Nie tylko nagradzają. Zdobądź prestiżowy tytuł i wejdź na wyższy poziom w branży.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#zapisy">Dołącz do mistrzostw</a>
+            <a class="btn btn-ghost" href="#regulamin">Zobacz regulamin</a>
+          </div>
+
+          <div class="meta">
+            <span>🌍 format: online</span>
+            <span>🏆 tytuły i wyróżnienia</span>
+            <span>🎓 Grand Prix: szkolenia</span>
+            <span>✅ transparentna ocena</span>
+          </div>
+        </div>
+
+        <aside class="card side" aria-label="Najważniejsze informacje">
+          <h3>Dlaczego warto?</h3>
+          <p>LAMI CHAMPIONSHIP jest dla stylistek ambitnych, które chcą wyróżnić się jakością i rozwojem.</p>
+          <ul class="bullets">
+            <li><span class="dot" aria-hidden="true"></span><span>Międzynarodowe jury ekspertów Lash & Brow</span></li>
+            <li><span class="dot" aria-hidden="true"></span><span>Jasne kryteria ocen i uczciwe zasady</span></li>
+            <li><span class="dot" aria-hidden="true"></span><span>Grand Prix w formie pakietu szkoleń online</span></li>
+            <li><span class="dot" aria-hidden="true"></span><span>Promocja zwyciężczyń w komunikacji wydarzenia</span></li>
+          </ul>
+          <div class="note">
+            <b style="color:var(--text)">Organizator:</b> Pawłowska Studio sp. z o.o.
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- O -->
+    <section id="o">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Czym jest LAMI CHAMPIONSHIP?</h2>
+          <p class="hint">W skrócie: prestiż + edukacja + transparentność</p>
+        </div>
+        <p style="margin:0; color:var(--muted)">
+          LAMI CHAMPIONSHIP to międzynarodowe mistrzostwa online dla branży Lash & Brow, łączące rywalizację na wysokim poziomie z realną wartością edukacyjną.
+          Powstały z potrzeby stworzenia wydarzenia, które jest merytoryczne, uczciwe i wspiera rozwój uczestniczek na każdym etapie kariery.
+        </p>
+      </div>
+    </section>
+
+    <!-- Wyróżniki -->
+    <section id="wyroznia">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Co wyróżnia LAMI CHAMPIONSHIP?</h2>
+          <p class="hint">Dlaczego właśnie te mistrzostwa</p>
+        </div>
+        <div class="grid-3">
+          <div class="tile"><strong>🎓 Edukacyjne Grand Prix</strong><p>Pakiet szkoleń online – nagroda, która realnie rozwija.</p></div>
+          <div class="tile"><strong>✅ Transparentny system ocen</strong><p>Jasne kryteria i uczciwe zasady oceniania.</p></div>
+          <div class="tile"><strong>🌍 Międzynarodowe jury</strong><p>Doświadczeni praktycy i autorytety branży.</p></div>
+          <div class="tile"><strong>🏆 Prestiżowe tytuły</strong><p>Wyróżnienia, które budują markę osobistą.</p></div>
+          <div class="tile"><strong>📣 Promocja zwyciężczyń</strong><p>Widoczność w komunikacji i mediach społecznościowych.</p></div>
+          <div class="tile"><strong>✨ Standard premium</strong><p>Wysoki poziom wizualny i organizacyjny wydarzenia.</p></div>
+        </div>
+        <div class="note">LAMI CHAMPIONSHIP to mistrzostwa dla osób, które oczekują czegoś więcej niż symbolicznej statuetki.</div>
+      </div>
+    </section>
+
+    <!-- Kategorie -->
+    <section id="kategorie">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Kategorie konkursowe</h2>
+          <p class="hint">Dobierz kategorię do swojej specjalizacji</p>
+        </div>
+        <p style="margin:0; color:var(--muted)">
+          Uczestniczki mogą wziąć udział w wybranych kategoriach konkursowych dopasowanych do różnych poziomów zaawansowania i specjalizacji.
+          Każda kategoria posiada osobne wymagania techniczne oraz kryteria ocen.
+        </p>
+        <ul class="list">
+          <li><i>Tu wstaw listę kategorii</i> (np. Brow Lamination / Lashes / Combo / itp.).</li>
+          <li>Możesz dodać krótkie opisy (1–2 zdania) przy każdej kategorii.</li>
+        </ul>
+        <div class="note">Szczegóły kategorii, wymagania i terminy znajdują się w regulaminie.</div>
+      </div>
+    </section>
+
+    <!-- Jury -->
+    <section id="jury">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Jury LAMI CHAMPIONSHIP</h2>
+          <p class="hint">Autorytet i rzetelna ocena</p>
+        </div>
+        <p style="margin:0 0 14px; color:var(--muted)">
+          Prace oceniane są przez międzynarodowe jury ekspertów branży Lash & Brow. Każda praca podlega ocenie zgodnie z ustalonym kluczem sędziowskim,
+          z zachowaniem uczciwości i bez konfliktu interesów.
+        </p>
+        <div class="judge-grid" aria-label="Lista sędziów (przykład)">
+          <div class="judge"><div class="avatar" aria-hidden="true"></div><div><b>Imię i nazwisko</b><span>Specjalizacja / kraj</span></div></div>
+          <div class="judge"><div class="avatar" aria-hidden="true"></div><div><b>Imię i nazwisko</b><span>Specjalizacja / kraj</span></div></div>
+          <div class="judge"><div class="avatar" aria-hidden="true"></div><div><b>Imię i nazwisko</b><span>Specjalizacja / kraj</span></div></div>
+        </div>
+        <p class="tiny">*Podmień powyższe kafelki na realne zdjęcia i nazwiska sędziów (lub wstaw je, gdy potwierdzicie skład jury).</p>
+      </div>
+    </section>
+
+    <!-- Nagrody -->
+    <section id="nagrody">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Nagrody i Grand Prix</h2>
+          <p class="hint">Motywacja, która ma sens</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="tile">
+            <strong>🏅 Tytuły i wyróżnienia</strong>
+            <p>Prestiżowe tytuły mistrzowskie, certyfikaty oraz wyróżnienia dla najlepszych uczestniczek.</p>
+          </div>
+          <div class="tile">
+            <strong>🎁 Nagrody od sponsorów</strong>
+            <p>Pakiety nagród oraz wsparcie partnerów wydarzenia (lista aktualizowana na bieżąco).</p>
+          </div>
+        </div>
+
+        <div class="note">
+          <b style="color:var(--text)">Grand Prix LAMI CHAMPIONSHIP:</b>
+          nagroda główna o charakterze edukacyjnym – pakiet szkoleń online prowadzonych przez topowe trenerki i ekspertów branży.
+        </div>
+      </div>
+    </section>
+
+    <!-- Regulamin -->
+    <section id="regulamin">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Regulamin i system ocen</h2>
+          <p class="hint">Transparentność to podstawa</p>
+        </div>
+        <p style="margin:0; color:var(--muted)">
+          LAMI CHAMPIONSHIP opiera się na jasnych zasadach. Każda praca oceniana jest według określonych kryteriów,
+          zaprojektowanych tak, aby zapewnić uczciwość i obiektywizm.
+        </p>
+        <div class="hero-actions" style="margin-top:14px;">
+          <a class="btn btn-primary" href="#" onclick="alert('Podmień ten link na plik PDF regulaminu (np. /regulamin.pdf).'); return false;">Pobierz regulamin (PDF)</a>
+          <a class="btn" href="#zapisy">Przejdź do zapisów</a>
+        </div>
+        <p class="tiny">*Gdy będziesz mieć regulamin w PDF, wstaw link zamiast #.</p>
+      </div>
+    </section>
+
+    <!-- Cena -->
+    <section id="cena">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Koszt udziału – co zawiera cena?</h2>
+          <p class="hint">Jasno i bez niedomówień</p>
+        </div>
+        <p style="margin:0; color:var(--muted)">Cena udziału w LAMI CHAMPIONSHIP obejmuje:</p>
+        <ul class="list">
+          <li>udział w mistrzostwach online,</li>
+          <li>ocenę pracy przez międzynarodowe jury,</li>
+          <li>certyfikat uczestnictwa,</li>
+          <li>możliwość zdobycia tytułu mistrzowskiego,</li>
+          <li>udział w rywalizacji o Grand Prix,</li>
+          <li>obecność w oficjalnej komunikacji wydarzenia.</li>
+        </ul>
+        <div class="note">
+          <b style="color:var(--text)">Cennik:</b> uzupełnij kwoty i pakiety w tym miejscu (np. udział w 1 kategorii / 2 kategoriach / pakiet PRO).
+        </div>
+      </div>
+    </section>
+
+    <!-- Organizator -->
+    <section id="pakiety">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Pakiety i ceny</h2>
+          <p class="hint">Wybierz wariant dopasowany do siebie</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="tile" style="position:relative;">
+            <strong>START</strong>
+            <p>Udział w 1 kategorii + ocena jury + certyfikat.</p>
+            <p style="margin-top:10px; font-weight:900; font-size:18px;">[wpisz cenę]</p>
+            <p class="tiny">Dla osób, które chcą spróbować i wejść w świat mistrzostw.</p>
+          </div>
+          <div class="tile" style="position:relative; border-color: rgba(254,121,197,.55); box-shadow: 0 12px 24px rgba(254,121,197,.12);">
+            <strong>PRO</strong>
+            <p>Udział w 2 kategoriach + priorytetowa komunikacja + certyfikaty.</p>
+            <p style="margin-top:10px; font-weight:900; font-size:18px;">[wpisz cenę]</p>
+            <p class="tiny">Najczęściej wybierany pakiet.</p>
+          </div>
+          <div class="tile" style="position:relative;">
+            <strong>VIP</strong>
+            <p>Udział w 3 kategoriach + dodatkowe bonusy organizatora.</p>
+            <p style="margin-top:10px; font-weight:900; font-size:18px;">[wpisz cenę]</p>
+            <p class="tiny">Dla ambitnych, które grają o maksimum.</p>
+          </div>
+        </div>
+
+        <div class="note">
+          <b style="color:var(--text)">Wskazówka:</b> jeśli masz kody rabatowe (np. od sędziów), dopisz tu krótką informację: „Kody rabatowe obowiązują podczas zapisu”.
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsorzy">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Sponsorzy i partnerzy</h2>
+          <p class="hint">Marki wspierające LAMI CHAMPIONSHIP</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="tile"><strong>[Logo / nazwa sponsora]</strong><p>Partner / Sponsor</p></div>
+          <div class="tile"><strong>[Logo / nazwa sponsora]</strong><p>Partner / Sponsor</p></div>
+          <div class="tile"><strong>[Logo / nazwa sponsora]</strong><p>Partner / Sponsor</p></div>
+        </div>
+
+        <div class="note">
+          <b style="color:var(--text)">Chcesz zostać sponsorem?</b> Napisz do nas – przygotujemy propozycję współpracy (nagrody, Grand Prix, nagrody specjalne).
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>FAQ</h2>
+          <p class="hint">Najczęstsze pytania</p>
+        </div>
+
+        <div style="display:grid; gap:10px;">
+          <details class="tile">
+            <summary style="cursor:pointer; font-weight:800;">Czy muszę mieć duże doświadczenie, żeby wystartować?</summary>
+            <p style="margin:8px 0 0; color:var(--muted);">Nie. Kategorie są tak zaplanowane, aby mogły w nich wystartować także osoby na różnych poziomach. Wybierz kategorię najlepiej dopasowaną do Twojej specjalizacji.</p>
+          </details>
+          <details class="tile">
+            <summary style="cursor:pointer; font-weight:800;">Jak wygląda ocenianie prac?</summary>
+            <p style="margin:8px 0 0; color:var(--muted);">Ocenianie odbywa się według jasno określonych kryteriów opisanych w regulaminie. Prace ocenia międzynarodowe jury ekspertów.</p>
+          </details>
+          <details class="tile">
+            <summary style="cursor:pointer; font-weight:800;">Czy mogę startować w więcej niż jednej kategorii?</summary>
+            <p style="margin:8px 0 0; color:var(--muted);">Tak — możesz wybrać jeden z pakietów (START/PRO/VIP) lub dopasować udział do swoich potrzeb.</p>
+          </details>
+          <details class="tile">
+            <summary style="cursor:pointer; font-weight:800;">Gdzie znajdę regulamin i terminy?</summary>
+            <p style="margin:8px 0 0; color:var(--muted);">W sekcji „Regulamin i system ocen” na tej stronie. Po publikacji pliku PDF podłączymy go pod przycisk „Pobierz regulamin”.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="organizator">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Organizator</h2>
+          <p class="hint">Kto stoi za projektem</p>
+        </div>
+        <p style="margin:0; color:var(--muted)">
+          LAMI CHAMPIONSHIP organizowane jest przez <b>Pawłowska Studio sp. z o.o.</b> – markę tworzoną przez osoby z doświadczeniem, pasją i realnym zaangażowaniem w rozwój branży beauty.
+          Naszym celem jest podnoszenie standardów, edukacja oraz tworzenie wydarzeń, które niosą realną wartość dla uczestniczek.
+        </p>
+      </div>
+    </section>
+
+    <!-- Zapisy -->
+    <section id="zapisy">
+      <div class="card section-card">
+        <div class="section-title">
+          <h2>Dołącz do LAMI CHAMPIONSHIP</h2>
+          <p class="hint">Zapisz się i pokaż swoją jakość</p>
+        </div>
+
+        <div class="signup">
+          <div>
+            <p style="margin:0 0 10px; color:var(--muted)">
+              Jeśli chcesz sprawdzić swoje umiejętności na międzynarodowej arenie, zdobyć prestiżowy tytuł i zainwestować w swój rozwój – to miejsce jest dla Ciebie.
+            </p>
+            <div class="note">
+              <b style="color:var(--text)">Uwaga:</b> ten formularz jest przykładowy. Możesz go podpiąć pod Google Forms, system płatności lub formularz na stronie.
+            </div>
+          </div>
+
+          <div class="tile" style="padding:18px;">
+            <form onsubmit="event.preventDefault(); alert('Podłącz formularz do swojego systemu zapisów (np. MailerLite, Tally, Google Forms, WooCommerce).');">
+              <div class="form-row">
+                <div>
+                  <label for="name">Imię i nazwisko</label>
+                  <input id="name" name="name" placeholder="Wpisz imię i nazwisko" required />
+                </div>
+                <div>
+                  <label for="email">E-mail</label>
+                  <input id="email" name="email" type="email" placeholder="np. kontakt@" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div>
+                  <label for="category">Kategoria</label>
+                  <select id="category" name="category" required>
+                    <option value="" selected disabled>Wybierz kategorię</option>
+                    <option>— Uzupełnij listę kategorii —</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="country">Kraj</label>
+                  <input id="country" name="country" placeholder="np. Polska" />
+                </div>
+              </div>
+
+              <div>
+                <label for="message">Wiadomość (opcjonalnie)</label>
+                <textarea id="message" name="message" placeholder="Np. pytanie o regulamin / płatność / kategorię"></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Wyślij zgłoszenie</button>
+              <p class="tiny">Wysyłając formularz, akceptujesz regulamin wydarzenia i politykę prywatności organizatora.</p>
+            </form>
+          </div>
+        </div>
+
+        <div class="hero-actions" style="margin-top:14px;">
+          <a class="btn" href="#top">Wróć na górę</a>
+          <a class="btn btn-primary" href="#" onclick="alert('Podmień ten przycisk na link do płatności / systemu zapisów.'); return false;">Przejdź do płatności / zapisów</a>
+        </div>
+
+        <p class="tiny">*Możesz dodać licznik czasu, FAQ i sekcję sponsorów poniżej, jeśli chcesz mocniej domknąć sprzedaż.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="y"></span> Pawłowska Studio sp. z o.o. • LAMI CHAMPIONSHIP</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="#" onclick="alert('Wstaw link do polityki prywatności.'); return false;">Polityka prywatności</a>
+          <a class="btn" href="#" onclick="alert('Wstaw adres e-mail kontaktowy.'); return false;">Kontakt</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
