@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Płatność zakończona – LAMI CHAMPIONSHIP</title>
+  <style>
+    :root{ --accent:#FE79C5; --text:#0b0b10; --muted:rgba(11,11,16,.70); --line:rgba(11,11,16,.10); }
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:#fff; color:var(--text); }
+    .wrap{ max-width:760px; margin:0 auto; padding:28px; }
+    .card{ border:1px solid var(--line); border-radius:22px; padding:22px; box-shadow:0 10px 28px rgba(11,11,16,.08); }
+    .badge{ display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid var(--line); background:rgba(254,121,197,.08); font-weight:800; }
+    h1{ margin:14px 0 10px; font-size:34px; letter-spacing:-.5px; }
+    p{ margin:0; color:var(--muted); line-height:1.6; }
+    .btn{ display:inline-flex; margin-top:16px; padding:12px 16px; border-radius:14px; border:1px solid var(--line); background:var(--accent); color:#111; font-weight:900; text-decoration:none; }
+    .btn2{ display:inline-flex; margin-top:16px; margin-left:10px; padding:12px 16px; border-radius:14px; border:1px solid var(--line); background:#fff; color:var(--text); font-weight:800; text-decoration:none; }
+    .small{ margin-top:14px; font-size:13px; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="badge">✅ Płatność przyjęta</div>
+      <h1>Dziękujemy! 💖</h1>
+      <p>
+        Twoja płatność za udział w <b>LAMI CHAMPIONSHIP</b> została zrealizowana.
+        Za chwilę otrzymasz potwierdzenie od Stripe na e-mail podany przy płatności.
+      </p>
+      <p class="small">
+        Jeśli nie widzisz maila — sprawdź folder SPAM/Oferty. W razie pytań napisz do organizatora.
+      </p>
+
+      <a class="btn" href="/">Wróć na stronę główną</a>
+      <a class="btn2" href="/#zapisy">Wróć do zapisów</a>
+    </div>
+  </div>
+</body>
+</html>
